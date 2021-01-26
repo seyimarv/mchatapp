@@ -7,6 +7,11 @@ export const BackgroundPage = styled.div `
   height: 100%;
   padding: 30px;
 
+  .error {
+      font-size: 12px;
+      color: red;
+  }
+
 @media ${device.phone} {
    
       padding: 0px;

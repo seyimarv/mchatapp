@@ -3,21 +3,44 @@ import FormInput from '../../Components/Form-input/Form-input'
 import Avatar from '../../Assests/user.svg'
 import Email from '../../Assests/Email.svg'
 import {Link} from 'react-router-dom'
+import {auth, createUserProfile} from '../../Firebase/Firebase'
 import Password from '../../Assests/password.svg'
 import { Container, Row, Col } from 'react-bootstrap'
 import { BackgroundPage, StyledSignUpPage } from './SignUp.styles'
 import CustomButton from '../../Components/custom-button/Custom-Button'
 import * as Yup from 'yup';
 import { Formik } from 'formik';
+import {storage} from '../../Firebase/Firebase'
 
 const SignUpPage = () => {
   const [formState, setFormState] = useState(true)
+  const [file, setFile] = useState(null);
+  const [url, setUrl] = useState("");
+
+  const handleImageUploadChange = (e)  => {
+    setFile(e.target.files[0]);
+}
+
+  const handleUploadImage = (e) => {
+    e.preventDefault();
+    const uploadTask = storage.ref(`/images/${file.name}`).put(file);
+    uploadTask.on("state_changed", console.log, console.error, () => {
+      storage
+        .ref("images")
+        .child(file.name)
+        .getDownloadURL()
+        .then((url) => {
+          setFile(null);
+          setUrl(url);
+        });
+    });
+  }
+
 
   const formInitialValues = { name: '',
    email: '',
    userName: '', 
-  password: '',
-  profilePicture: ''     }
+  password: '' }
 
   const ToggleFormState= () => {
     setFormState(!formState)
@@ -39,13 +62,13 @@ const SignUpPage = () => {
                   { formState ?
                 <CustomButton background='blue' color='white' hover='blue' onClick={ToggleFormState}
                 style={{
-                  padding: '5px 10px',
+                  padding: '3px 10px',
                   borderRadius: '2px'
                 }}
                 >Next</CustomButton>
                 :
                 <CustomButton style={{
-                  padding: '5px 10px',
+                  padding: '3px 10px',
                   borderRadius: '2px'
                 }}
                 background='blue' color='white' hover='blue' 
@@ -53,6 +76,30 @@ const SignUpPage = () => {
                 }
                   <h4>Welcome to mChat</h4>
                   <p>Create a new account</p>
+                <div>
+                  <p style={{
+                    textAlign: 'left',
+                    fontWeight: '100'
+                  }}>profile picture</p>
+                  <form onSubmit={handleUploadImage}
+                  style={{
+                    margin: '10px',
+                    maxWidth: '50%'
+                  }} className=''>
+                   <input type='file' required
+                    onChange={handleImageUploadChange}
+                     placeholder='choose profile picture'
+                     style={{
+                      width: '200px',
+                      marginBottom: '10px'
+                    }}
+                     />
+                    <CustomButton type='submit' disabled={!file} style={{
+                      padding: '3px 10px',
+                      borderRadius: '5px',
+                    }}>Upload</CustomButton>
+                   </form>
+                  </div>
                 
               <Formik
               initialValues={formInitialValues}
@@ -66,19 +113,23 @@ const SignUpPage = () => {
               .required('choose a username'),
               password: Yup.string().min(6, 'password must be at least 6 characters')
               .required('password is required'),
-              profilePicture: Yup.string()
-              .required('profile picture is required')
 
               })}
-              onSubmit={async (values, { setSubmitting, resetForm }) => {
-              const { userName,  name, email, password} = values 
+              onSubmit={ async (values, { setSubmitting, resetForm }) => {
+                const { userName,  name, email, password} = values 
+                const profilePicture = url
+              
               try {
-                
-
+                const createUser = async () => {
+                 const { user } = await auth.createUserWithEmailAndPassword(email,password);
+                 await createUserProfile(user,  {userName,  name, profilePicture});
+                }
+                await createUser()
+                  resetForm()
                   setSubmitting(false);
                 
                   } catch (error) {
-                  console.error(error);
+                  console.error(error, error.message);
                   }
               }}
               >
@@ -130,17 +181,18 @@ const SignUpPage = () => {
                             {formik.touched.userName && formik.errors.userName ? (
                             <div className='error'>{formik.errors.userName}</div>
                         ) : null}
-                        <FormInput id='profilePicture' 
+                        {/* <FormInput id='profilePicture' 
                             error={formik.errors.profilePicture} 
-                            {...formik.getFieldProps('profilePicture')}
-                            type='file' label='Profile picture'
+                           value={url}
+                            type='text' label='Profile picture'
                               picture={Avatar}
                             />
                             {formik.touched.profilePicture && formik.errors.profilePicture ? (
                             <div className='error'>{formik.errors.profilePicture}</div>
-                        ) : null}
+                        ) : null} */}
                          
-                          <CustomButton background='blue' color='white'
+                          <CustomButton background='blue' type='submit'
+                          color='white'
                             hover='blue' className='btn-block'>Sign up</CustomButton>
                         </div>
                         

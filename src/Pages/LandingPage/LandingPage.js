@@ -20,6 +20,7 @@ import MessageUs from '../../Assests/dialogue.svg'
 
 const LandingPage = () => {
 
+
     return (
   <div style={{background: 'rgb(253,255,245)'}}>
      <Header/>
@@ -40,6 +41,7 @@ const LandingPage = () => {
              </Col>
              <Col xs={12} sm={4}>
                 <img src={PhoneIcon} />
+                {/* <img src={user.profilePicture}/> */}
              </Col>
          </Row>
      </Container>

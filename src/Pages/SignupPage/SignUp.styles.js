@@ -5,7 +5,7 @@ import {device} from '../../Styles/Breakpoints/Breakpoints';
 export const BackgroundPage = styled.div `
   background: #d3d3d3;
   height: 100%;
-  padding: 10px;
+  padding: 40px;
 
 @media ${device.phone} {
    
@@ -23,7 +23,7 @@ export const StyledSignUpPage  = styled.div `
 background-color: white;
 ${'' /* background-image: linear-gradient(315deg, #f9d29d 0%, #ffd8cb 74%); */}
 border: 1px solid white;
-margin: 40px;
+margin: 20px;
 box-shadow:  5px 5px 5px 5px #ccc;
 .signup-image {
         background: url(${Background});
@@ -38,7 +38,7 @@ box-shadow:  5px 5px 5px 5px #ccc;
         margin: 50px;
         @media ${device.phone} {
         margin: 0px;
-        height: 150px;
+        height: 130px;
     }
        
     
@@ -59,21 +59,26 @@ box-shadow:  5px 5px 5px 5px #ccc;
     }
 .signup-inputs {
     background-color:;
-    padding: 50px;
+    padding: 25px;
 
     h4 {
         text-align: center;
- 
         font-weight: bolder;
         letter-spacing: 2px;
         font-size: 28px;
-        padding: 40px 0px;
+        padding: 20px 0px;
+
+        @media ${device.phone} {
+        margin: 0px;
+        padding: 15px 0px;
+        font-size: 25px;
+
+    }
+       
         
     }
     p {
         text-align: center;
-       
-       
         font-weight: 600;
         letter-spacing: 2px;
     }

@@ -22,9 +22,9 @@ const Header = () => {
             <Nav.Link><Links>Products</Links></Nav.Link>
             <Nav.Link><Links>Pricing</Links></Nav.Link>
             <Nav.Link><Links>Solutions</Links></Nav.Link>
-            <Nav.Link><Links>
-            <Link to='/Login'><CustomButton background='red' hoverColor='red' boxShadow style={{padding: '5px 10px'}}>Sign in</CustomButton></Link>
-            </Links></Nav.Link>
+           <Links>
+            <Link to='/Login'><CustomButton background='red' hover='red' boxshadow="true" style={{padding: '5px 10px'}}>Sign in</CustomButton></Link>
+            </Links>
             </Nav>
         </Navbar.Collapse>
         </Container>

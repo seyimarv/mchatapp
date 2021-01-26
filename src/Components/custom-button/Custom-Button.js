@@ -12,4 +12,4 @@ return (
 }
 
 
-export default CustomButton
+export default CustomButton;
