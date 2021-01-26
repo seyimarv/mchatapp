@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import ChatView from '../../Components/Chat-view/ChatView'
 import {StyledChatPage} from './ChatPage.styles'
 import { connect } from 'react-redux';
-import {Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import { auth } from '../../Firebase/Firebase';
 import { LogOut, setUsers} from '../../redux/user/User.actions';
 import UsersMap from '../../Components/UsersMap/UsersMap';
@@ -16,9 +16,9 @@ import { setUserMessages } from '../../redux/Messages/Message.actions';
 
 const ChatPage = ({currentUser, currentUserMessages,
      LogOut, history, 
-    setUsers, setUserMessages}) => {
+    setUsers, setUserMessages, location}) => {
         const {id} = currentUser
-
+console.log(location)
 const Logout = () => {
     auth.signOut()
     LogOut()
@@ -34,7 +34,7 @@ useEffect(() => {
     return (
      <StyledChatPage>
           {/* <p onClick={Logout}>Log out</p> */}
-            <Container className='chat_page' fluid>
+            <Container className='chat_page ' fluid>
                 <Row>
                     <Col lg={3} className='mt-3'> 
                     <UsersMap />
@@ -46,7 +46,10 @@ useEffect(() => {
                     </Col>
                 </Row>
             </Container>
-          
+             <div className='d-lg-none'>
+                  <Route exact path='/chat' component={UsersMap}/>
+                  <Route exact path={`/chat/:userId`} component={ChatView}/>
+             </div>
         </StyledChatPage>
     )
 }

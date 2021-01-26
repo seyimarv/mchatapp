@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {device} from '../../Styles/Breakpoints/Breakpoints';
 
 
 
@@ -7,7 +8,14 @@ export const StyledChatPage = styled.div `
 .chat_page {
     background-color: #3a243b;
     height: 100vh;
+    margin: 0px;
 
+    @media ${device.phone} {
+      display: none;
+    }
+    @media ${device.TabletMd} {
+      display: none;
+    }
 
     .users_map {
         height: 90vh;

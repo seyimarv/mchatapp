@@ -46,7 +46,6 @@ const ChatView = ({match, currentUsers, currentMessages}) => {
                   <img src={chatUser.profilePicture} alt='profile picture'/>
                   <div>
                   <h2 className='user_name'>{chatUser.userName}</h2>
-                  <p className='name'>{chatUser.name}</p> 
                   </div>
                   </div>
              

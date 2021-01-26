@@ -36,7 +36,7 @@ const [message, setMessage] = useState('')
          <form onSubmit={handleSubmit}>
             <input onChange={handleChange} placeholder='Text a message'/>
             <CustomButton style={{
-                padding: '2px 10px',
+                padding: '2px 1px',
                 borderRadius: '50%',
                 background: ' rgb(89, 172, 82)',
                 border: '1px solid  rgb(89, 172, 82)'

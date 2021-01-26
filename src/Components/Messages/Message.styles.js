@@ -13,8 +13,8 @@ display: flex;
 
 
  img {
-     height: 50px;
-     width: 50px;
+     height: 30px;
+     width: 30px;
      border-radius: 50%;
      padding: 2px;
  }
@@ -24,15 +24,21 @@ display: flex;
      font-size: 15px;
      color: whitesmoke;
      overflow-wrap: break-word !important;
-     padding: 10px 10px;
-     width: 90%;
-     margin: 10px;
+     padding: 5px 10px;
+     width: 95%;
+     margin: 2px 2px ;
 
      @media ${device.phone} {
-     width: 80%;
+     width: 85%;
     }
 
 
+ }
+ span {
+     display: block;
+     color: grey;
+     font-size: 10px;
+     padding: 5px;
  }
  
 
