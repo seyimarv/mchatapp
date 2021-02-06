@@ -5,11 +5,12 @@ import {StyledChatView }from './ChatView.styles'
 import { connect } from 'react-redux';
 import { setUserMessages } from '../../redux/Messages/Message.actions';
 import Message from '../Messages/Messages'
+import BackIcon from '../../Assests/left-arrow.svg'
 
 
 
 
-const ChatView = ({match, currentUsers, currentMessages}) => {
+const ChatView = ({match, currentUsers, currentMessages, history}) => {
   const [chatUser, setChatUser] = useState({name: '',
    userName: '', 
    id: '', 
@@ -37,12 +38,15 @@ const ChatView = ({match, currentUsers, currentMessages}) => {
        { chatUser ?
         <Container fluid>
             <Row className='chat_view_header sticky-top'>
-          
-              
-        
               <Col>
            
                  <div className='row'>
+                   <img src={BackIcon} alt='go back' style={{
+                     width: '40px',
+                     color: 'white'
+                   }} onClick={() => 
+                   history.push('/chat')
+                   } className='go_back_icon'/>
                   <img src={chatUser.profilePicture} alt='profile picture'/>
                   <div>
                   <h2 className='user_name'>{chatUser.userName}</h2>
@@ -54,9 +58,9 @@ const ChatView = ({match, currentUsers, currentMessages}) => {
      
             <Row className='chat_body'>
                {
-              chatMessages.map(({message, timestamp, senderId, recieverId}) => 
+              chatMessages.map(({id, message, timestamp, senderId, recieverId}) => 
                <Message senderId={senderId} message={message} timestamp={timestamp}
-                 recieverId={recieverId} chatUserDp={chatUser.profilePicture}
+                 recieverId={recieverId} chatUserDp={chatUser.profilePicture} id={id}
                />
               )
             }

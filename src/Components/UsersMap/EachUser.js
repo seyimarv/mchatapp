@@ -11,7 +11,7 @@ const EachUser = ({id, userName, name, profilePicture, }) => {
    <StyledEachUser>
           <Link to={`/chat/${id}`}>
          <div className='d-flex my-2' style={{
-                  borderBottom: '1px solid grey'
+                 
          }}>
              <div lg={4}>
                <img src={profilePicture} alt='Dp'
@@ -25,7 +25,7 @@ const EachUser = ({id, userName, name, profilePicture, }) => {
              </div>
              <div lg={6} user_details style={{
                  padding: '10px',
-            
+                
              }}>
                  <h4>{userName}</h4>
                  <p>{name}</p>

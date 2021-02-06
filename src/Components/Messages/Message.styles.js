@@ -19,19 +19,30 @@ display: flex;
      padding: 2px;
  }
  p {
-    border-radius: 10px;
-    background: #ccc; 
-     font-size: 15px;
-     color: whitesmoke;
+ 
+     background: rgb(190,174,238);
+     background: radial-gradient(circle, rgba(190,174,238,1) 34%, rgba(148,187,233,1) 100%);
+     font-size: 12px;
      overflow-wrap: break-word !important;
      padding: 5px 10px;
      width: 95%;
-     margin: 2px 2px ;
+     margin: 2px 0px ;
+     
 
      @media ${device.phone} {
      width: 85%;
     }
 
+    img {
+        display: none;
+    }
+   &:hover {
+      img {
+          display: block;
+          float: right;
+          height: 25px;
+      }
+   }
 
  }
  span {

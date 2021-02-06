@@ -60,7 +60,8 @@ const SignUpPage = () => {
                           
             <Col className='signup-inputs' xs={12} lg={6}>
                   { formState ?
-                <CustomButton background='blue' color='white' hover='blue' onClick={ToggleFormState}
+                <CustomButton background='blue' color='white' hover='blue'
+                 onClick={ToggleFormState}
                 style={{
                   padding: '3px 10px',
                   borderRadius: '2px'

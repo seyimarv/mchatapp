@@ -1,14 +1,22 @@
-import React from 'react'
+import React, {useState} from 'react'
 import EachUser from './EachUser'
 import { connect } from 'react-redux';
+import ChatPageHeader from '../ChatPageHeader/ChatPageHeader';
+import { setUserMessages } from '../../redux/Messages/Message.actions';
 
 
-const UsersMap = ({currentUsers}) => {
-  console.log(currentUsers)
+const UsersMap = ({currentUsers, setUserMessages, currentUser, onSearchChange, onSearchSubmit}) => {
+
+
     return (
         <div className='users_map'>
+        <ChatPageHeader onSearchChange={onSearchChange} onSearchSubmit={onSearchSubmit} />
+      
+       
            {
-               currentUsers.map(({id, name, userName, profilePicture}) => 
+               currentUsers.filter(
+                 user => user.id !== currentUser.id
+               ).map(({id, name, userName, profilePicture}) => 
                <EachUser key={id} id={id} name={name} userName={userName} profilePicture={profilePicture}/>
                )
            }
@@ -17,7 +25,10 @@ const UsersMap = ({currentUsers}) => {
 }
 
 const mapStateToProps = state => ({
-    currentUsers: state.user.currentUsers
+    currentUsers: state.user.currentUsers,
+    currentUser: state.user.currentUser
   })
-
-export default  connect(mapStateToProps)(UsersMap)
+  const mapDispatchToProps = dispatch => ({
+    setUserMessages: messages => dispatch(setUserMessages(messages))
+  });
+export default  connect(mapStateToProps, mapDispatchToProps)(UsersMap)

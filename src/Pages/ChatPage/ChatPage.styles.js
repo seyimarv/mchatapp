@@ -5,23 +5,23 @@ import {device} from '../../Styles/Breakpoints/Breakpoints';
 
 export const StyledChatPage = styled.div `
 
-.chat_page {
-    background-color: #3a243b;
-    height: 100vh;
-    margin: 0px;
 
-    @media ${device.phone} {
-      display: none;
-    }
-    @media ${device.TabletMd} {
-      display: none;
-    }
-
-    .users_map {
+.users_map {
+   
         height: 90vh;
         overflow-y: scroll;
         border-radius: 15px;
-        background: purple;
+        background: whitesmoke;
+        @media only screen 
+  and (min-device-width: 1024px)  {
+    margin-top: -25px;
+  }
+      .navbar {
+        @media only screen 
+  and (min-device-width: 1024px)  {
+      display: none;
+  }
+      }
 
         ::-webkit-scrollbar {
     width: 5px;
@@ -35,11 +35,31 @@ export const StyledChatPage = styled.div `
   
 
   ::-webkit-scrollbar-thumb {
-    background: rgb(89, 172, 82);
+    background: rgba(145, 61, 136, 0.4) ;
     border-radius: 10px;
   }
 
+  @media ${device.phone} {
+      height: 100vh;
+      border-radius: 0px;
     }
+    }
+
+
+
+.chat_page {
+    background-color: whitesmoke;
+    height: 100vh;
+    margin: 0px;
+
+    @media ${device.phone} {
+      display: none;
+    }
+    @media ${device.TabletMd} {
+      display: none;
+    }
+
+
  
 }
 ${'' /* .current_user_profile_box {

@@ -3,10 +3,20 @@ import {device} from '../../Styles/Breakpoints/Breakpoints';
 
 
 export const StyledChatView = styled.div `
-background-color: #87ceeb;
+background: whitesmoke;
 border-radius: 10px;
+overflow: hidden;
+@media only screen 
+  and (min-device-width: 1024px)  {
+    margin-top: -25px;
+  }
 
-
+.go_back_icon {
+    @media only screen 
+  and (min-device-width: 1024px) {
+      display: none;
+  }
+}
 
 @media ${device.TabletMd} {
      height: 100vh;
@@ -25,21 +35,31 @@ img {
 }
 
   .bottom {
-      margin: 10px 5px;
+      margin: 10px 0px;
       z-index: 100; 
       position: sticky;
       bottom: 10px;
+      width: 100%;
   }
 .chat_view_header {
-    background-color:#696969;
+   
     ${'' /* border-bottom: 1px solid white; */}
     position: sticky-top;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
-
+    h2 {
+           font-size: 20px;
+           color: black;
+           font-weight: 400;
+    }
+    @media only screen 
+  and (min-device-width: 1024px)  {
+    background-color: #ccc;
+  }
 
     @media ${device.phone} {
      border-radius: 0px;
+   
     }
 
 }
@@ -56,9 +76,13 @@ img {
     margin: 0px;
 }
 .chat_body {
- ${'' /* padding-bottom: 100%; */}
+  ${'' /* -webkit-box-shadow: 0px -4px 6px  #ccc;
+  -moz-box-shadow: 0px -4px 6px  #ccc;
+  box-shadow: 0px -4px 6px #ccc; */}
+  background-color: white;
+
  display: block;
- ${'' /* padding-bottom: 20px; */}
+ padding-bottom: 20px;
  height: 70vh;
  overflow-y: scroll;
  overflow-x: hidden;
@@ -66,6 +90,8 @@ img {
 
  @media ${device.TabletMd} {
      height: 85vh;
+     border-top-right-radius: 30px;
+ border-top-left-radius: 30px;
     }
 
    
@@ -81,7 +107,9 @@ img {
   
 
   ::-webkit-scrollbar-thumb {
-    background: rgb(89, 172, 82);
+    background: rgb(190,174,238);
+      background: radial-gradient(circle, 
+      rgba(190,174,238,1) 34%, rgba(148,187,233,1) 100%);
     border-radius: 10px;
   }
 

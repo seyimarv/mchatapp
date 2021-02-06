@@ -1,14 +1,20 @@
 import React from 'react'
 import { StyledMessage } from './Message.styles'
 import { connect } from 'react-redux';
-import { Row, Col } from 'react-bootstrap';
+import DeleteIcon from '../../Assests/delete.svg'
+import Database from '../../Firebase/Firebase';
 
 
 
 
 
-const Message = ({message, senderId, recieverId, timestamp, currentUser, chatUserDp}) =>  {
-   const Date = timestamp.toDate()
+const Message = ({id, message, senderId, recieverId, timestamp, currentUser, chatUserDp}) =>  {
+  
+    const DeleteMessage = () => {
+        console.log('')
+        Database.collection('messages').doc(id).delete()
+    }
+
     return (
        <div className='row'>
         <div className='col-sm-12 col-lg-12'>
@@ -19,9 +25,14 @@ const Message = ({message, senderId, recieverId, timestamp, currentUser, chatUse
             }} className='float-left'>
             <img src={chatUserDp}/>
             <p style={{
-                background: 'rgba(0, 0, 0, 0.7)'
+                color: 'grey',
+                background: 'whitesmoke',
+                borderTopRightRadius: '20px',
+                borderBottomRightRadius:' 50px'
             }}>{message}
-            <span>{Date.toLocaleString()}</span>
+            { timestamp ?
+            <span>{timestamp.toDate().toLocaleString()}</span> : null
+            }
             </p>
            
             </StyledMessage> : null
@@ -32,13 +43,22 @@ const Message = ({message, senderId, recieverId, timestamp, currentUser, chatUse
             {
                 senderId === currentUser.id ?
                 <StyledMessage className='float-right'>
-                        <img src={currentUser.profilePicture}/>
+                       
                         <p style={{
-                background: '#006400'
+                background: '#669D4A',
+                borderTopLeftRadius: '20px',
+                borderBottomLeftRadius:' 50px',
+              
+                background: 'radial-gradient(circle, rgba(238,174,202,1) 2+%, rgba(148,187,233,1) 100%)'
             }}>{message}
-            <span>{Date.toLocaleString()}</span>
+                       { timestamp ?
+            <span>{timestamp.toDate().toLocaleString()}</span> : null
+            }
+            <img src={DeleteIcon} alt='delete icon' onClick={() => {
+                DeleteMessage()
+            }}/>
             </p>
-           
+            <img src={currentUser.profilePicture} alt='profile picture'/>
                 </StyledMessage>
                 : null
             }
