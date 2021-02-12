@@ -42,8 +42,6 @@ img {
       width: 100%;
   }
 .chat_view_header {
-   
-    ${'' /* border-bottom: 1px solid white; */}
     position: sticky-top;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;

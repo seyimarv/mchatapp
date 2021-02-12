@@ -1,5 +1,5 @@
 import React from 'react'
-import {FormCover, Input, Label, FormImage} from './Form-input.styles'
+import {FormCover, Input,  FormImage} from './Form-input.styles'
 
 const FormInput = ({picture, label, Border, ...other }) => {
      

@@ -40,8 +40,7 @@ const LandingPage = () => {
                  </StyledButton></Link>
              </Col>
              <Col xs={12} sm={4}>
-                <img src={PhoneIcon} />
-                {/* <img src={user.profilePicture}/> */}
+                <img src={PhoneIcon} alt='phone icon'/>
              </Col>
          </Row>
      </Container>
@@ -50,16 +49,16 @@ const LandingPage = () => {
      <Container>
          <Row>
              <Col className=''>
-                <img src={JoinImage} />
+                <img src={JoinImage} alt='joinimage icon'/>
                 Join
           
              </Col>
              <Col  className=''>
-             <img src={ConnectImage} />
+             <img src={ConnectImage} alt='connectImage icon'/>
                  Connect
              </Col>
              <Col  className=''>
-             <img src={ChatImage} />
+             <img src={ChatImage} alt='chatImage icon'/>
                  Chat
              </Col>
          </Row>
@@ -72,7 +71,7 @@ const LandingPage = () => {
                      <Row>
                          <Col xs={6}>
                            <div className='box'>
-                           <img src={WelcomeImage}/>
+                           <img src={WelcomeImage} alt='welcomeImage icon'/>
                              <h4>
                                Welcome
                              </h4>
@@ -83,7 +82,7 @@ const LandingPage = () => {
                            </div>
 
                            <div  className='box mt-3'>
-                           <img src={JoinUsImage}/>
+                           <img src={JoinUsImage} alt='joinusImage icon'/>
                            <h4>
                               Join us 
                              </h4>
@@ -96,7 +95,7 @@ const LandingPage = () => {
                          </Col>
                          <Col xs={6}>
                           <div  className='box  mt-4'>
-                          <img src={Network}/>
+                          <img src={Network}  alt='Nextwork icon'/>
                           <h4>
                                Connect
                              </h4>
@@ -106,7 +105,7 @@ const LandingPage = () => {
                              </p>
                            </div>
                            <div  className='box mt-3'>
-                           <img src={MessageUs}/>
+                           <img src={MessageUs} alt='MessageUs icon'/>
                            <h4>
                                Chat
                              </h4>
@@ -120,7 +119,7 @@ const LandingPage = () => {
                      </Row>
                   </Col>
                   <Col className='thirdwrapper-right'>
-                      <img src={PeopleImage}/>
+                      <img src={PeopleImage} alt='peopleImage icon'/>
                       <h3>Perfect for connecting people Together</h3>
                       <p>mChat helps you connect and share with friends, family, co-workers, 
                       and other people in your life.</p>

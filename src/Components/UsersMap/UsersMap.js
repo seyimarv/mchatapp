@@ -1,16 +1,16 @@
-import React, {useState} from 'react'
+import React from 'react'
 import EachUser from './EachUser'
 import { connect } from 'react-redux';
 import ChatPageHeader from '../ChatPageHeader/ChatPageHeader';
 import { setUserMessages } from '../../redux/Messages/Message.actions';
 
 
-const UsersMap = ({currentUsers, setUserMessages, currentUser, onSearchChange, onSearchSubmit}) => {
+const UsersMap = ({currentUsers, setUserMessages, currentUser, onSearchChange, onSearchSubmit, LogOut, handleShow}) => {
 
 
     return (
         <div className='users_map'>
-        <ChatPageHeader onSearchChange={onSearchChange} onSearchSubmit={onSearchSubmit} />
+        <ChatPageHeader onSearchChange={onSearchChange} onSearchSubmit={onSearchSubmit} handleShow={handleShow} LogOut={LogOut}/>
       
        
            {

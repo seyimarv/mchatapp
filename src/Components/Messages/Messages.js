@@ -23,7 +23,7 @@ const Message = ({id, message, senderId, recieverId, timestamp, currentUser, cha
                 left: '0px',
 
             }} className='float-left'>
-            <img src={chatUserDp}/>
+            <img src={chatUserDp} alt='chatuser dp'/>
             <p style={{
                 color: 'grey',
                 background: 'whitesmoke',
@@ -45,10 +45,9 @@ const Message = ({id, message, senderId, recieverId, timestamp, currentUser, cha
                 <StyledMessage className='float-right'>
                        
                         <p style={{
-                background: '#669D4A',
+             
                 borderTopLeftRadius: '20px',
                 borderBottomLeftRadius:' 50px',
-              
                 background: 'radial-gradient(circle, rgba(238,174,202,1) 2+%, rgba(148,187,233,1) 100%)'
             }}>{message}
                        { timestamp ?
@@ -58,7 +57,7 @@ const Message = ({id, message, senderId, recieverId, timestamp, currentUser, cha
                 DeleteMessage()
             }}/>
             </p>
-            <img src={currentUser.profilePicture} alt='profile picture'/>
+            <img src={currentUser.profilePicture} alt='profile dp'/>
                 </StyledMessage>
                 : null
             }

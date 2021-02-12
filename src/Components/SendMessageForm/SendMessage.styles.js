@@ -39,11 +39,10 @@ const [message, setMessage] = useState('')
             <CustomButton style={{
                 padding: '0px 1px',
                 borderRadius: '50%',
-                 
                 border: '1px solid  rgb(89, 172, 82)'
             }} background='rgb(190,174,238)' color='rgb(190,174,238)'
              type='submit'  disabled={!message}>
-               <img src={SendImage} />
+               <img src={SendImage} alt='sendImage icon'/>
              </CustomButton>
           </form>
         </StyledSendMessage>

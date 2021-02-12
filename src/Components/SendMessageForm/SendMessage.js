@@ -26,7 +26,7 @@ export const StyledSendMessage = styled.div `
       }
 
 
-     @media ${device.TabletMd} {
+     @media ${device.TabletLg} {
      width: 70%;
      margin: 0px 5px;
     }

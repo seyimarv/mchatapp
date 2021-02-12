@@ -15,6 +15,9 @@ export const StyledSearchBar = styled.div `
      @media ${device.phone}{
          margin: 0px;
      }
+     ${'' /* @media ${device.TabletMd}{
+         width: 100%;
+     } */}
      .searchIcon {
          color: grey;
          margin-top: 5px !important;

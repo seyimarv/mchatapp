@@ -2,7 +2,7 @@ const size = {
     phone: '480px',
     phoneLg: '580px',
     TabletMd: '768px',
-    TabetLg: '1200px'
+    TabetLg: '1276px'
   }
   export const device = {
     phone: `(max-width: ${size.phone})`,

@@ -3,14 +3,13 @@ import {Container, Row, Col} from 'react-bootstrap'
 import SendMessage from '../SendMessageForm/SendMessage.styles'
 import {StyledChatView }from './ChatView.styles'
 import { connect } from 'react-redux';
-import { setUserMessages } from '../../redux/Messages/Message.actions';
 import Message from '../Messages/Messages'
 import BackIcon from '../../Assests/left-arrow.svg'
 
 
 
 
-const ChatView = ({match, currentUsers, currentMessages, history}) => {
+const ChatView = ({match, currentUsers, currentMessages, history,handleShow}) => {
   const [chatUser, setChatUser] = useState({name: '',
    userName: '', 
    id: '', 
@@ -47,7 +46,7 @@ const ChatView = ({match, currentUsers, currentMessages, history}) => {
                    }} onClick={() => 
                    history.push('/chat')
                    } className='go_back_icon'/>
-                  <img src={chatUser.profilePicture} alt='profile picture'/>
+                  <img src={chatUser.profilePicture} alt='profile dp'/>
                   <div>
                   <h2 className='user_name'>{chatUser.userName}</h2>
                   </div>

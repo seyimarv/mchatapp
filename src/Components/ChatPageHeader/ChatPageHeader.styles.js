@@ -17,10 +17,14 @@ h5 {
       rgba(190,174,238,1) 34%, rgba(148,187,233,1) 100%); */}
 }
 .eachNav {
-    margin: 0px 70px;
+    margin: 0px 150px;
 
     @media ${device.phoneLg} {
     margin: 5px 0px !important;
+    }
+
+    @media ${device.TabletLg} {
+    margin: 0px 70px !important;
     }
 }
 

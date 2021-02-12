@@ -11,13 +11,16 @@ import UsersMap from '../../Components/UsersMap/UsersMap';
 import { fetchUserMessages, fetchUsers } from '../../utils/App.utils';
 import { setUserMessages } from '../../redux/Messages/Message.actions';
 import ChatPageHeader from '../../Components/ChatPageHeader/ChatPageHeader';
+import Modal from 'react-bootstrap/Modal'
+import ProfileView from '../../Components/ProfileView/ProfileView';
+// import Modal from '../../Components/Modal/Modal'
 
 
 
 
 const ChatPage = ({currentUser, currentUserMessages,
      LogOut, history, 
-    setUsers, setUserMessages, location, currentUsers}) => {
+    setUsers, setUserMessages, location, currentUsers, match}) => {
         const {id} = currentUser
 console.log(location)
 const [searchField, setSearchField] = useState('')
@@ -25,14 +28,14 @@ console.log(currentUsers)
 const onSearchChange = e => {
   setSearchField(e.target.value)
 }
-const [showModal,setShowModal] = useState(false)
 
-const openModal =() => {
-  setShowModal(true)
-}
-const closeModal =() => {
-  setShowModal(false)
-}
+const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+
+
 
 const onSearchSubmit = e => {
 e.preventDefault()
@@ -63,13 +66,16 @@ useEffect(() => {
 
     return (
      <StyledChatPage>
-      
+       
+       <Modal show={show} onHide={handleClose}>
+         <ProfileView currentUser={currentUser}
+          currentUserMessages={currentUserMessages} handleClose={handleClose}/>
+       </Modal>
             <Container className='chat_page ' fluid>
             <ChatPageHeader  LogOut={Logout}
              onSearchSubmit={onSearchSubmit} 
             onSearchChange={onSearchChange}
-            showModal={showModal}
-            closeModal={closeModal}
+            handleShow={handleShow}
 
             />
                 <Row>
@@ -77,17 +83,32 @@ useEffect(() => {
                     <UsersMap />
                     </Col>
                     <Col lg={9} className='mt-3'>
-               
+                    { location.pathname === '/chat'  ?
+                    <div className='typewriter'>
+                      <h4>
+                      welcome to mChat, search User and click on them to start chatting
+                      </h4>
+                      </div> :
                     <Route path={`/chat/:userId`} component={ChatView}/>
+
+                    }
                 
                     </Col>
                 </Row>
             </Container>
-             <div className='d-lg-none'>
+             <div className='display_large_none'>
+             {/* <Modal show={show} onHide={handleClose}>
+         <ProfileView />
+       </Modal> */}
+       
                   <Route exact path='/chat' > 
-                   <UsersMap onSearchChange={onSearchChange} onSearchSubmit={onSearchSubmit}/>
+                   <UsersMap onSearchChange={onSearchChange}
+                    onSearchSubmit={onSearchSubmit}   LogOut={Logout}
+                    handleShow={handleShow}
+                    />
                   </Route>
-                   <Route exact path={`/chat/:userId`} component={ChatView}/>
+                   <Route exact path={`/chat/:userId`}
+                    component={ChatView}/>
              </div>
         </StyledChatPage>
     )

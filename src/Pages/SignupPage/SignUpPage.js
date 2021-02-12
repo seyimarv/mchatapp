@@ -16,13 +16,14 @@ const SignUpPage = () => {
   const [formState, setFormState] = useState(true)
   const [file, setFile] = useState(null);
   const [url, setUrl] = useState("");
-
+  const [loadingImage, setLoadingImage] = useState('');
   const handleImageUploadChange = (e)  => {
     setFile(e.target.files[0]);
 }
 
   const handleUploadImage = (e) => {
     e.preventDefault();
+    setLoadingImage('loading image')
     const uploadTask = storage.ref(`/images/${file.name}`).put(file);
     uploadTask.on("state_changed", console.log, console.error, () => {
       storage
@@ -33,6 +34,7 @@ const SignUpPage = () => {
           setFile(null);
           setUrl(url);
         });
+        setLoadingImage('image uploaded, add other details and click save')
     });
   }
 
@@ -78,10 +80,13 @@ const SignUpPage = () => {
                   <h4>Welcome to mChat</h4>
                   <p>Create a new account</p>
                 <div>
-                  <p style={{
+                <p style={{
                     textAlign: 'left',
                     fontWeight: '100'
-                  }}>profile picture</p>
+                  }}>profile picture png, svg, jpg</p>
+                   <p style={{
+                     color:'cyan'
+                   }}>{loadingImage}</p>
                   <form onSubmit={handleUploadImage}
                   style={{
                     margin: '10px',

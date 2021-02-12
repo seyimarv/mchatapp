@@ -3,11 +3,10 @@ import './App.css';
 import { Switch, Route, Redirect} from 'react-router-dom';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import SignUpPage from './Pages/SignupPage/SignUpPage';
-import Database, {auth, createUserProfile} from './Firebase/Firebase'
+import {auth, createUserProfile} from './Firebase/Firebase'
 import { connect } from 'react-redux';
 import {setCurrentUser} from './redux/user/User.actions'
 import LoginPage from './Pages/LoginPage/LoginPage'
-import ChatView from './Components/Chat-view/ChatView';
 import ChatPage from './Pages/ChatPage/ChatPage';
 import ProtectedRoute from './ProtectedRoute';
 
