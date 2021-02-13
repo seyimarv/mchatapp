@@ -13,6 +13,7 @@ import { setUserMessages } from '../../redux/Messages/Message.actions';
 import ChatPageHeader from '../../Components/ChatPageHeader/ChatPageHeader';
 import Modal from 'react-bootstrap/Modal'
 import ProfileView from '../../Components/ProfileView/ProfileView';
+import Loading from '../../Components/Loading/Loading';
 // import Modal from '../../Components/Modal/Modal'
 
 
@@ -66,7 +67,8 @@ useEffect(() => {
 
     return (
      <StyledChatPage>
-       
+
+
        <Modal show={show} onHide={handleClose}>
          <ProfileView currentUser={currentUser}
           currentUserMessages={currentUserMessages} handleClose={handleClose}/>

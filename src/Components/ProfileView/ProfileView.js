@@ -32,8 +32,13 @@ const ProfileView = ({ currentUser, currentUserMessages, handleClose }) => {
              <h5 className='profile_header_text mt-2'>Profile</h5>
           </div>
            <div className='profile_box'>
-           <div className='my-4' style={{}}>
-            <img className='profile dp' src={currentUser.profilePicture} />
+           <div className='my-2 text-center display-block' >
+            <img className='profile dp' 
+            style={{
+               maxHeight: '250px',
+               
+           }}
+            src={currentUser.profilePicture} />
             </div>
             <div className='text-center my-3'>
                <h5>{currentUser.userName}</h5>

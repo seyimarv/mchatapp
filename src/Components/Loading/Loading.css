@@ -1,0 +1,13 @@
+.loading {
+display: flex;
+justify-content: center;
+padding: 250px 0px;
+
+}
+.spinner-border {
+    background: radial-gradient(circle, rgba(238,174,202,1),
+     rgba(148,187,233,1) 100%) !important;
+     margin: auto;
+  
+    
+}
