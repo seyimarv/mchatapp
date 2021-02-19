@@ -23,7 +23,6 @@ const contentWrapperStyle = {
 }
 
 const iconPlaceholderStyle = {
-  
   width: '40px'
 }
 
