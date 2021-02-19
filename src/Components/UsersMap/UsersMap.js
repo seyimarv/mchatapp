@@ -5,7 +5,7 @@ import ChatPageHeader from '../ChatPageHeader/ChatPageHeader';
 import { setUserMessages } from '../../redux/Messages/Message.actions';
 
 
-const UsersMap = ({currentUsers, setUserMessages, currentUser, onSearchChange, onSearchSubmit, LogOut, handleShow}) => {
+const UsersMap = ({users, setUserMessages, currentUser, onSearchChange, onSearchSubmit, LogOut, handleShow}) => {
 
 
     return (
@@ -14,10 +14,11 @@ const UsersMap = ({currentUsers, setUserMessages, currentUser, onSearchChange, o
       
        
            {
-               currentUsers.filter(
+               users.filter(
                  user => user.id !== currentUser.id
                ).map(({id, name, userName, profilePicture}) => 
-               <EachUser key={id} id={id} name={name} userName={userName} profilePicture={profilePicture}/>
+               <EachUser key={id} id={id} name={name} userName={userName} 
+               profilePicture={profilePicture}/>
                )
            }
         </div>

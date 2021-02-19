@@ -9,6 +9,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import { BackgroundPage, StyledSignUpPage } from './SignUp.styles'
 import CustomButton from '../../Components/custom-button/Custom-Button'
 import * as Yup from 'yup';
+import { useAlert } from "react-alert";
 import { Formik } from 'formik';
 import {storage} from '../../Firebase/Firebase'
 
@@ -17,6 +18,7 @@ const SignUpPage = () => {
   const [file, setFile] = useState(null);
   const [url, setUrl] = useState("");
   const [loadingImage, setLoadingImage] = useState('');
+  const alert = useAlert()
   const handleImageUploadChange = (e)  => {
     setFile(e.target.files[0]);
 }
@@ -136,6 +138,7 @@ const SignUpPage = () => {
                 
                   } catch (error) {
                   console.error(error, error.message);
+                  alert.error('an error occured try again')
                   }
               }}
               >

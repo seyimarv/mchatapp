@@ -1,21 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import SearchIcon from '../../Assests/icons8-search.svg'
 import { StyledSearchBar } from './SearchBar.styles'
 
 
-const SearchBar = ({onSearchChange, onSearchSubmit}) => {
-   const handleKeyPress = (e) => {
-        if(e.key === 'Enter'){
-            onSearchSubmit(e)
-        }
-      }
+const SearchBar = ({ onSearchChange }) => {
+
+    
     return (
         <StyledSearchBar>
-        <div className='searchInput'>
-           <img src={SearchIcon} alt='search icon' onClick={onSearchSubmit} className='searchIcon'/>
-           <input placeholder='Search users' onKeyPress={handleKeyPress} onChange={onSearchChange}/>
-         
-        </div>
+            <div className='searchInput'>
+                <img src={SearchIcon} style={{
+                    height: '20px'
+                }}
+               alt='search icon'
+                 className='searchIcon' />
+                <input placeholder='Search users' onChange={onSearchChange} />
+
+            </div>
         </StyledSearchBar>
     )
 }

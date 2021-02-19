@@ -13,6 +13,7 @@ import { setUserMessages } from '../../redux/Messages/Message.actions';
 import ChatPageHeader from '../../Components/ChatPageHeader/ChatPageHeader';
 import Modal from 'react-bootstrap/Modal'
 import ProfileView from '../../Components/ProfileView/ProfileView';
+import { useAlert } from "react-alert";
 import Loading from '../../Components/Loading/Loading';
 // import Modal from '../../Components/Modal/Modal'
 
@@ -25,35 +26,42 @@ const ChatPage = ({currentUser, currentUserMessages,
         const {id} = currentUser
 console.log(location)
 const [searchField, setSearchField] = useState('')
-console.log(currentUsers)
-const onSearchChange = e => {
-  setSearchField(e.target.value)
+const alert = useAlert()
+
+
+const onSearchChange =  e => {
+   setSearchField(e.target.value)  
 }
+const filteredUsers = currentUsers.filter(user => 
+  user.userName.toLowerCase().includes(searchField.toLowerCase())
+ )
+
+
 
 const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+const handleClose = () => setShow(false);
+const handleShow = () => setShow(true);
 
 
 
 
 const onSearchSubmit = e => {
 e.preventDefault()
-if(searchField.length >= 1) {
-  const filteredUsers = currentUsers.filter(user => 
-    user.userName === searchField
-   )
-   console.log(filteredUsers)
- setUsers(filteredUsers)
-} else  {
-  fetchUsers(setUsers)
-}
+// if(searchField.length >= 1) {
+//   const filteredUsers = currentUsers.filter(user => 
+//     user.userName === searchField
+//    )
+//  setUsers(filteredUsers)
+// } else  {
+//   fetchUsers(setUsers)
+// }
+
 
 }
 const Logout = () => {
     auth.signOut()
     LogOut()
+    alert.success('log out successful')
     history.push('/')
     
 }
@@ -82,7 +90,7 @@ useEffect(() => {
             />
                 <Row>
                     <Col lg={3} className='mt-3 users_destop'> 
-                    <UsersMap />
+                    <UsersMap users={filteredUsers}/>
                     </Col>
                     <Col lg={9} className='mt-3'>
                     { location.pathname === '/chat'  ?
@@ -107,6 +115,7 @@ useEffect(() => {
                    <UsersMap onSearchChange={onSearchChange}
                     onSearchSubmit={onSearchSubmit}   LogOut={Logout}
                     handleShow={handleShow}
+                    users={filteredUsers}
                     />
                   </Route>
                    <Route exact path={`/chat/:userId`}

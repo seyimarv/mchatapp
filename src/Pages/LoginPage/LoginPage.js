@@ -7,11 +7,13 @@ import { Container, Row, Col } from 'react-bootstrap'
 import { BackgroundPage, StyledLoginPage } from './Login.styles'
 import {auth} from '../../Firebase/Firebase'
 import { Formik } from 'formik';
+import { useAlert } from "react-alert";
 import * as Yup from 'yup';
 import CustomButton from '../../Components/custom-button/Custom-Button'
 
 const LoginPage = () => {
   const formInitialValues = {email: '', password: ''}
+  const alert = useAlert()
   return (
     <BackgroundPage>
       <StyledLoginPage>
@@ -46,10 +48,11 @@ const LoginPage = () => {
                     await auth.signInWithEmailAndPassword(email, password);
                     setSubmitting(false);
                     resetForm()
-              
+                   
 
                   } catch (error) {
                     console.error(error);
+                    alert.error('an error occured check your details')
 
                   }
                 }}
